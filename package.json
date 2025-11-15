@@ -1,29 +1,31 @@
 {
-    "name": "@skyzopedia/baileys-mod",
-    "version": "6.0.2",
-    "description": "WhatsApp API Modification By K",
+    "name": "@pinaapalerie/baileys",
+    "version": "6.0.6",
+    "description": "WhatsApp API Modification By K - Modified version by Pinaapalerie",
     "keywords": [
         "whatsapp",
-        "laurine-wabot",
         "baileys",
         "whatsapp-web",
         "whatsapp-chat",
         "whatsapp-group",
         "botwa",
-        "whiskeysockets"
+        "whiskeysockets",
+        "pinaapalerie"
     ],
-    "homepage": "https://www.npmjs.com/package/@whiskeysockets/baileys",
+    "homepage": "https://github.com/VynaaValerie/baileys-mods",
     "repository": {
-        "url": "https://www.npmjs.com/package/@whiskeysockets/baileys"
+        "type": "git",
+        "url": "https://github.com/VynaaValerie/baileys-mods.git"
     },
     "license": "MIT",
-    "author": "Adhiraj Singh",
+    "author": "Pinaapalerie (Modified from Adhiraj Singh's original)",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
     "files": [
-        "lib/*",
-        "WAProto/*.js",
-        "engine-requirements.js"
+        "lib/**/*",
+        "WAProto/**/*",
+        "engine-requirements.js",
+        "README.md"
     ],
     "scripts": {
         "build:all": "tsc && typedoc",
@@ -34,11 +36,12 @@
         "gen:protobuf": "sh WAProto/GenerateStatics.sh",
         "lint": "eslint src --ext .js,.ts,.jsx,.tsx",
         "lint:fix": "eslint src --fix --ext .js,.ts,.jsx,.tsx",
-        "prepack": "",
-        "prepare": "",
+        "prepack": "npm run build:tsc",
+        "prepare": "npm run build:tsc",
         "preinstall": "node ./engine-requirements.js",
         "release": "release-it",
-        "test": "jest"
+        "test": "jest",
+        "prepublishOnly": "npm run build:tsc"
     },
     "dependencies": {
         "@adiwajshing/keyed-db": "^0.2.4",
@@ -63,7 +66,6 @@
     },
     "devDependencies": {
         "@adiwajshing/eslint-config": "github:adiwajshing/eslint-config",
-        "@types/got": "^9.6.11",
         "@types/jest": "^27.5.1",
         "@types/node": "^16.0.0",
         "@types/sharp": "^0.29.4",
@@ -80,8 +82,7 @@
         "ts-jest": "^27.0.3",
         "ts-node": "^10.8.1",
         "typedoc": "^0.24.7",
-        "typescript": "^4.6.4", 
-        "json": "^11.0.0"
+        "typescript": "^4.6.4"
     },
     "peerDependencies": {
         "jimp": "^0.22.12",
@@ -103,8 +104,11 @@
             "optional": true
         }
     },
-    "packageManager": "yarn@1.22.19",
     "engines": {
         "node": ">=20.0.0"
+    },
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
     }
 }
